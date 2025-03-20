@@ -15,19 +15,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  #place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -48,21 +39,69 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+
+.page-select-menu {
+  user-select: none;
+  cursor: pointer;
 }
+
+.page-contents {
+  margin: 2em;
+  display: block;
+}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+@keyframes expandIdan {
+  from {
+    width: 0;
+  }
+  to {
+    width: 2.4em;
+  }
+}
+
+@keyframes expandRaftzenk {
+  from {
+    width: 0;
+  }
+  to {
+    width: 3.9em;
+  }
+}
+
+.fullname {
+  height: 2.25em;
+  display: block;
+
+  span {
+    vertical-align: bottom;
+  }
+}
+
+.name-idan-reveal {
+  overflow: hidden;
+  display: inline-block;
+  text-align: left;
+  width: 0;
+  animation: expandIdan 0.7s ease-out forwards;
+}
+
+.name-raftzenk-reveal {
+  overflow: hidden;
+  display: inline-block;
+  text-align: left;
+  width: 0;
+  animation: expandRaftzenk 0.7s ease-out forwards;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
   }
   button {
     background-color: #f9f9f9;

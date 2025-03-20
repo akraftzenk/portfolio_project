@@ -3,6 +3,8 @@ import './App.css'
 import PageSelectMenu from "./components/PageSelectMenu.tsx";
 import {useState} from "react";
 import Home from "./components/Home.tsx";
+import MenuTitle from "./components/MenuTitle.tsx";
+import Projects from "./components/Projects.tsx";
 
 function App() {
     const [menu, setMenu] = useState("Home")
@@ -13,16 +15,22 @@ function App() {
         case "Home":
             menuComponent = <Home/>
             break;
+        case "Projects":
+            menuComponent = <Projects/>
+            break;
     }
 
-    function menuSelected(menuName: string) {
+    function selectMenu(menuName: string) {
         setMenu(menuName);
     }
 
     return (
         <>
-            <PageSelectMenu menuSelected={menuSelected}/>
-            {menuComponent}
+            <MenuTitle menuSelected={menu} />
+            <PageSelectMenu selectMenu={selectMenu} selectedMenu={menu} />
+            <span className="page-contents">
+                {menuComponent}
+            </span>
         </>
   )
 }
