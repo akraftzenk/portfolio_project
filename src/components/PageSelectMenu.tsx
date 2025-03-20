@@ -1,9 +1,22 @@
+interface PageSelectMenuProps {
+    menuSelected?: (menuName: string) => void
+}
 
-function PageSelectMenu() {
+const menuNames = ["Home", "Projects", "Contact"]
+
+function PageSelectMenu({menuSelected}: PageSelectMenuProps) {
+    function selectMenu(menuName: string) {
+        menuSelected(menuName);
+    }
+
+    let buttons = [];
+
+    for (let menuName of menuNames) {
+        buttons.push((<button className="m-2" onClick={() => selectMenu(menuName)}>{menuName}</button>));
+    }
+
     return (<div>
-        <h3>Home</h3>
-        <h3>Projects</h3>
-        <h3>Contact</h3>
+        {buttons}
     </div>);
 }
 
